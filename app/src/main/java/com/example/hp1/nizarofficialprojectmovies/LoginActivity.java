@@ -106,12 +106,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "signInWithEmail:success");
+                                Log.d(TAG, "openUser:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 //updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
-                                Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                Log.w(TAG, "openUser:failure", task.getException());
                                 Toast.makeText(LoginActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
                                 //updateUI(null);
@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         }
                     });
         }
+
         Button mEmailSignInButton = (Button) findViewById(R.id.btSignIn);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
