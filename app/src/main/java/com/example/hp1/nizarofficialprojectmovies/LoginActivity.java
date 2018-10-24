@@ -100,8 +100,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         public void openUser (String email , String password){
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+           mAuth.signInWithEmailAndPassword(email, password)
+                   .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             }
 
                             // ...
-                        }
+                       }
                     });
         }
 
@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
 
-    }
+  //  }
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
