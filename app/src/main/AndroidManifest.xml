@@ -15,8 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".CameraGalleryActivity"
-            android:label=".CameraGalleryActivity"
+            android:name=".LoginActivity"
+            android:label=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".ListActivity" />
         <activity android:name=".AlertDialogActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".CameraGalleryActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity"></activity>
     </application>

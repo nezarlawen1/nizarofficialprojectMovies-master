@@ -78,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity  implements View.OnClickLi
             return;
         }
 
-        getLoaderManager().initLoader(0, null, (LoaderManager.LoaderCallbacks<Object>) this);
+//        getLoaderManager().initLoader(0, null, (LoaderManager.LoaderCallbacks<Object>) this);
     }
 
     private boolean mayRequestContacts() {
