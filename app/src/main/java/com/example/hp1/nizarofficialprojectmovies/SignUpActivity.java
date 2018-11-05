@@ -46,8 +46,8 @@ public class SignUpActivity extends AppCompatActivity  implements View.OnClickLi
         btSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(i);
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -60,6 +60,8 @@ public class SignUpActivity extends AppCompatActivity  implements View.OnClickLi
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUser:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
+                            startActivity(i);
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

@@ -6,34 +6,44 @@
     <group
         android:layout_width="match_parent"
         android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/Home_page"
+
+            android:icon="@drawable/ic_home_page"
+
+            android:title="Home Page" />
         <item
             android:id="@+id/all_movies"
+            android:icon="@drawable/ic_all_movies"
 
 
             android:title="All Movies" />
         <item
             android:id="@+id/top_10"
 
+            android:icon="@drawable/ic_top_10"
 
             android:title="Top 10" />
         <item
             android:id="@+id/search"
 
+            android:icon="@drawable/ic_search_"
 
             android:title="Search" />
         <item
-            android:id="@+id/favourites"
+            android:id="@+id/Favorites"
 
+            android:icon="@drawable/ic_favorites"
 
-            android:title="Favourites" />
+            android:title="Favorites" />
         <item
             android:id="@+id/recommended"
 
-            android:title="Recommended" />
-        <item
-            android:id="@+id/main_page"
+            android:icon="@drawable/ic_recommended"
 
-            android:title="Main Page" />
+            android:title="Recommended" />
+
 
     </group>
 

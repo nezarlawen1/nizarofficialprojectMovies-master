@@ -1,6 +1,6 @@
 package com.example.hp1.nizarofficialprojectmovies;
 
-import android.renderscript.Sampler;
+
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -58,9 +58,6 @@ public class FireActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-
-
-
     }
 
     @Override
