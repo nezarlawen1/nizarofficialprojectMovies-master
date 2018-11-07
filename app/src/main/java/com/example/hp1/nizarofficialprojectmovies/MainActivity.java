@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, new AllMoviesFragment()).commit();
-            navigationView.setCheckedItem(R.id.all_movies);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new SearchFragment()).commit();
+            navigationView.setCheckedItem(R.id.search);
         }
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -106,9 +106,10 @@ public class MainActivity extends AppCompatActivity
             AllMoviesFragment fragment = new AllMoviesFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container , new AllMoviesFragment());
+            fragmentTransaction.replace(R.id.fragment_container, new AllMoviesFragment());
             fragmentTransaction.commit();
-        } else if (id == R.id.top_10) {
+        }
+        if (id == R.id.top_10) {
             //set the fragment initially
             Top10Fragment fragment = new Top10Fragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction =
@@ -116,13 +117,19 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.fragment_container , new Top10Fragment());
             fragmentTransaction.commit();
 
-        } else if (id == R.id.search) {
+        }
+        if (id == R.id.search) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                   new SearchFragment()).commit();
 
-        } else if (id == R.id.Favorites) {
+        }
+        if (id == R.id.Favorites) {
 
-        } else if (id == R.id.recommended) {
+        }
+        if (id == R.id.recommended) {
 
-        } else if (id == R.id.Home_page) {
+        }
+        if (id == R.id.Home_page) {
 
         }
 
