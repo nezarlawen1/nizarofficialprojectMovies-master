@@ -42,7 +42,7 @@ public class FireActivity extends AppCompatActivity implements View.OnClickListe
         etEmail = (EditText)findViewById(R.id.etEmail);
         etPass = (EditText)findViewById(R.id.etPass);
         btSave = (Button)findViewById(R.id.btSave);
-        btSave.setOnClickListener(new View.OnClickListener() {
+/*        btSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = etEmail.getText().toString();
@@ -50,7 +50,7 @@ public class FireActivity extends AppCompatActivity implements View.OnClickListe
                 myRef.child("profession").setValue("Student");
                 myRef.child("name").push().setValue(null);
             }
-        });
+        });*/
         tvEmail = (TextView)findViewById(R.id.tvEmail);
         tvProfession = (TextView)findViewById(R.id.tvProfession);
         lvUsers = findViewById(R.id.lvUsers);
@@ -58,7 +58,7 @@ public class FireActivity extends AppCompatActivity implements View.OnClickListe
         final ArrayAdapter<String > adapter = new ArrayAdapter(this ,android.R.layout.simple_list_item_1,Users);
         lvUsers.setAdapter(adapter);
 
-        myRef.child("name").addValueEventListener(new ValueEventListener() {
+/*        myRef.child("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map<String,String> map = (Map<String,String>) dataSnapshot.getValue();
@@ -77,11 +77,12 @@ public class FireActivity extends AppCompatActivity implements View.OnClickListe
 
 
             }
-        });
-        myRef.child("Users").addChildEventListener(new ChildEventListener() {
+        });*/
+        myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String name = dataSnapshot.getValue(String.class);
+                Log.d("FIREBASE",name);
                 Users.add(name);
                 adapter.notifyDataSetChanged();
 
