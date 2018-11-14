@@ -100,10 +100,12 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.Favorites:
-                Toast.makeText(this, "fav", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new FavoritesFragment()).commit();
                 break;
             case R.id.recommended:
-                Toast.makeText(this, "rec", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new recommendedFragment()).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
