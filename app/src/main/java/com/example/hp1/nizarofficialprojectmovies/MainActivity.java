@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new AllMoviesFragment()).commit();
-            navigationView.setCheckedItem(R.id.all_movies);
+            navigationView.setCheckedItem(R.id.Home_page);
         }
     }
 
@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
             case R.id.Home_page:
-                Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HomePageFragment()).commit();
                 break;
             case R.id.all_movies:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
