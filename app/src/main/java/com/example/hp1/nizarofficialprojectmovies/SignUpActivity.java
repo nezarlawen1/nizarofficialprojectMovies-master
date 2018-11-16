@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,10 +25,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
-public class SignUpActivity extends AppCompatActivity  implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "FIREBASE" ;
+    private static final String TAG = "FIREBASE";
     Button btSignUp;
+    EditText etFirstName, etLastName, etEmailSignUp, etCreatePassword, etConfirmPassword;
+    TextView tvSignUp;
+
 
     private AutoCompleteTextView mEmailView;
     private static final int REQUEST_READ_CONTACTS = 0;
@@ -37,6 +42,13 @@ public class SignUpActivity extends AppCompatActivity  implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        etFirstName = findViewById(R.id.etFirstName);
+        etLastName = findViewById(R.id.etLastName);
+        etEmailSignUp = findViewById(R.id.etEmailSignUp);
+        etCreatePassword = findViewById(R.id.etCreatePassword);
+        etConfirmPassword = findViewById(R.id.etConfirmPassword);
+        tvSignUp = findViewById(R.id.tvSignUp);
+
         mAuth = FirebaseAuth.getInstance();
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -46,13 +58,17 @@ public class SignUpActivity extends AppCompatActivity  implements View.OnClickLi
         btSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });
     }
-    public void createUser (String email , String password) {
-        mAuth.createUserWithEmailAndPassword(email,password)
+
+    private void populateAutoComplete() {
+    }
+
+    public void createUser(String email, String password) {
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -75,50 +91,19 @@ public class SignUpActivity extends AppCompatActivity  implements View.OnClickLi
                     }
                 });
     }
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
-
-//        getLoaderManager().initLoader(0, null, (LoaderManager.LoaderCallbacks<Object>) this);
-    }
-
-    private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
-            }
-        }
-    }
-
-
 
     @Override
     public void onClick(View v) {
+        if (v == btSignUp) {
+            String user = etEmailSignUp.getText().toString();
+            String password = etCreatePassword.getText().toString();
+            if (user.equals("")&&password.equals("")) {
 
+            } else {
+                createUser(user, "AbcDefg123");
+
+            }
+        }
     }
 }
+
