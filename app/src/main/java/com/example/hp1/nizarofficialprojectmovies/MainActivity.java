@@ -79,31 +79,30 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
-            case R.id.Home_page:
+            case R.id.Home_page :
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HomePageFragment()).commit();
                 break;
-            case R.id.all_movies:
+            case R.id.all_movies :
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AllMoviesFragment()).commit();
                 break;
-            case R.id.top_10:
+            case R.id.top_10 :
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Top10Fragment()).commit();
-
                 break;
 
-            case R.id.search:
+            case R.id.search :
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SearchFragment()).commit();
                 break;
 
-            case R.id.Favorites:
+            case R.id.Favorites :
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new FavoritesFragment()).commit();
                 break;
-            case R.id.recommended:
+            case R.id.recommended :
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new recommendedFragment()).commit();
                 break;

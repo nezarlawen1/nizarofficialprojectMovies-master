@@ -36,14 +36,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         btSignIn = findViewById(R.id.btSignIn);
-        btSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(),MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        btSignIn.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -53,13 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvSignin = (TextView) findViewById(R.id.tvSignin);
 
         btOrSignUp = findViewById(R.id.btOrSignUp);
-        btOrSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplication(), SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
+        btOrSignUp.setOnClickListener(this);
     }
 
     public void onStart() {

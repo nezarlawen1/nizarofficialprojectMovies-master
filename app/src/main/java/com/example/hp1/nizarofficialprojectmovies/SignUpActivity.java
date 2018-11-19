@@ -55,13 +55,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         populateAutoComplete();
 
         btSignUp = (Button) findViewById(R.id.btSignUp);
-        btSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        btSignUp.setOnClickListener(this);
     }
 
     private void populateAutoComplete() {
@@ -100,7 +94,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             if (user.equals("")&&password.equals("")) {
 
             } else {
-                createUser(user, "AbcDefg123");
+                createUser(user, password);
 
             }
         }
