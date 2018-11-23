@@ -35,7 +35,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select ↓"
+        android:text="created by nizar lawen"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold" />
