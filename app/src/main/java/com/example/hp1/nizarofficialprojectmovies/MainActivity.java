@@ -1,10 +1,8 @@
 package com.example.hp1.nizarofficialprojectmovies;
 
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -27,6 +25,8 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawer;
     ImageView profileImage;
     Bitmap bitmap;
+    private static final int CAMERA_REQUEST = 0;
+    private static final int SELECT_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity
         }
 
 
-        profileImage = (ImageView) findViewById(R.id.profileImage);
+        profileImage = findViewById(R.id.profileImage);
+
     }
         public String saveImage(Bitmap bitmap){
             File root = Environment.getExternalStorageDirectory();
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity
             return filePath;
 
         }
+
 
 
 
