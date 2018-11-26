@@ -1,6 +1,10 @@
 package com.example.hp1.nizarofficialprojectmovies;
 
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,12 +13,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawer;
+    ImageView profileImage;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +50,36 @@ public class MainActivity extends AppCompatActivity
                     new AllMoviesFragment()).commit();
             navigationView.setCheckedItem(R.id.Home_page);
         }
+
+
+        profileImage = (ImageView) findViewById(R.id.profileImage);
     }
+        public String saveImage(Bitmap bitmap){
+            File root = Environment.getExternalStorageDirectory();
+
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String filePath = root.getAbsolutePath()+"/DCIM/Camera/IMG_"+timeStamp+".jpg";
+            File file = new File(filePath);
+            try
+            {
+                file.createNewFile();
+                FileOutputStream ostream = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, ostream);
+                ostream.close();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                Toast.makeText(this ,"Failed to save image",Toast.LENGTH_SHORT).show();
+            }
+            return filePath;
+
+        }
+
+
+
+
+
 
     @Override
     public void onBackPressed() {
