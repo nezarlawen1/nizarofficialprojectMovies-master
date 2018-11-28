@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity
 
 
         profileImage = findViewById(R.id.profileImage);
+        profileImage.setOnClickListener();
 
     }
         public String saveImage(Bitmap bitmap){
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity
             }
             return filePath;
 
-        }
+         }
 
 
 
