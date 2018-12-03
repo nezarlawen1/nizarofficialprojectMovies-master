@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="profileImage" type="id">profile_image</item>
+    <item
+        type="id"
+        name="id_name" />
 </resources>
