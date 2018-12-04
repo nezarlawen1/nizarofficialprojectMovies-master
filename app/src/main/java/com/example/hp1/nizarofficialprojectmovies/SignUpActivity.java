@@ -51,7 +51,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         mAuth = FirebaseAuth.getInstance();
 
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = findViewById(R.id.email);
         populateAutoComplete();
 
         btSignUp = (Button) findViewById(R.id.btSignUp);

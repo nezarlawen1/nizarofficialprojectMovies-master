@@ -55,7 +55,7 @@ public class FireActivity extends AppCompatActivity implements View.OnClickListe
         tvProfession = (TextView)findViewById(R.id.tvProfession);
         lvUsers = findViewById(R.id.lvUsers);
         Users = new ArrayList<String>();
-        final ArrayAdapter<String > adapter = new ArrayAdapter(this ,android.R.layout.simple_list_item_1,Users);
+        final ArrayAdapter<String> adapter = new ArrayAdapter(this ,android.R.layout.simple_list_item_1,Users);
         lvUsers.setAdapter(adapter);
 
 /*        myRef.child("name").addValueEventListener(new ValueEventListener() {

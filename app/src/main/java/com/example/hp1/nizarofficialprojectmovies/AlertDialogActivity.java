@@ -23,9 +23,15 @@ public class AlertDialogActivity extends AppCompatActivity implements DialogInte
 
         builder.setMessage("Are you sure");
 
-        builder.setCancelable(false);
+        builder.setCancelable(true);
 
-        builder.setPositiveButton("YES",this);
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent i = new Intent(AlertDialogActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         builder.setNegativeButton("NO",this);
 
