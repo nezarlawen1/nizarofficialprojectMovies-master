@@ -2,6 +2,7 @@ package com.example.hp1.nizarofficialprojectmovies;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,7 +36,14 @@ public class AlertDialogActivity extends AppCompatActivity implements DialogInte
 
         builder.setNegativeButton("NO",this);
 
-        AlertDialog dialog=builder.create();
+        final AlertDialog dialog=builder.create();
+        dialog.setOnShowListener( new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface arg0) {
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+            }
+        });
 
         dialog.show();
     }

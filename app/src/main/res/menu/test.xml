@@ -9,6 +9,8 @@
     </group>
     <group>
         <item android:title="what"
-            android:id="@+id/what"/>
+            android:id="@+id/what" />
+        <item android:title="who"
+            android:id="@+id/who"/>
     </group>
 </menu>
