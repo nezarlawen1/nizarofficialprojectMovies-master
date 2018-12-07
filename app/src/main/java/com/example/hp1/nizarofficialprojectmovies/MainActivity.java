@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new AllMoviesFragment()).commit();
+                    new HomePageFragment()).commit();
             navigationView.setCheckedItem(R.id.Home_page);
         }
 
@@ -57,37 +57,30 @@ public class MainActivity extends AppCompatActivity
         //profileImage.setOnClickListener();
 
     }
-        public String saveImage(Bitmap bitmap){
-            File root = Environment.getExternalStorageDirectory();
 
-            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String filePath = root.getAbsolutePath()+"/DCIM/Camera/IMG_"+timeStamp+".jpg";
-            File file = new File(filePath);
-            try
-            {
-                file.createNewFile();
-                FileOutputStream ostream = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, ostream);
-                ostream.close();
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-                Toast.makeText(this ,"Failed to save image",Toast.LENGTH_SHORT).show();
-            }
-            return filePath;
+    public String saveImage(Bitmap bitmap) {
+        File root = Environment.getExternalStorageDirectory();
 
-         }
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String filePath = root.getAbsolutePath() + "/DCIM/Camera/IMG_" + timeStamp + ".jpg";
+        File file = new File(filePath);
+        try {
+            file.createNewFile();
+            FileOutputStream ostream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, ostream);
+            ostream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Failed to save image", Toast.LENGTH_SHORT).show();
+        }
+        return filePath;
 
-
-
-
-
+    }
 
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -108,11 +101,15 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        Intent goToNextActivity = new Intent(getApplicationContext(),AlertDialogActivity.class);
+        Intent goToNextActivity = new Intent(getApplicationContext(), AlertDialogActivity.class);
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_settings:
-                goToNextActivity = new Intent(getApplicationContext(),AlertDialogActivity.class);
+                goToNextActivity = new Intent(getApplicationContext(), AlertDialogActivity.class);
+                startActivity(goToNextActivity);
+                break;
+            case R.id.about:
+                goToNextActivity = new Intent(getApplicationContext(), AboutActivity.class);
                 startActivity(goToNextActivity);
                 break;
         }
@@ -120,36 +117,35 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
-            case R.id.Home_page :
+            case R.id.Home_page:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HomePageFragment()).commit();
                 break;
-            case R.id.all_movies :
+            case R.id.all_movies:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AllMoviesFragment()).commit();
                 break;
-            case R.id.top_10 :
+            case R.id.top_10:
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Top10Fragment()).commit();
                 break;
 
-            case R.id.search :
+            case R.id.search:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SearchFragment()).commit();
                 break;
 
-            case R.id.Favorites :
+            case R.id.Favorites:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new FavoritesFragment()).commit();
                 break;
-            case R.id.recommended :
+            case R.id.recommended:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new recommendedFragment()).commit();
                 break;

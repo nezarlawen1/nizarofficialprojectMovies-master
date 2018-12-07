@@ -10,4 +10,8 @@
         android:id="@+id/sign_out"
         android:orderInCategory="100"
         android:title="Sign out" />
+    <item
+        android:title="About"
+        android:orderInCategory="100"
+        android:id="@+id/about" />
 </menu>
