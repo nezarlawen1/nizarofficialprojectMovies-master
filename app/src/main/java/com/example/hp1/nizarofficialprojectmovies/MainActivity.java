@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
 
         Intent goToNextActivity = new Intent(getApplicationContext(), AlertDialogActivity.class);
+        Intent goToNextActivity1 = new Intent(getApplicationContext(), AboutActivity.class);
 
         switch (item.getItemId()) {
             case R.id.action_settings:
@@ -110,6 +111,10 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.about:
                 goToNextActivity = new Intent(getApplicationContext(), AboutActivity.class);
+                startActivity(goToNextActivity1);
+                break;
+            case R.id.sign_out:
+                goToNextActivity = new Intent(getApplicationContext(), AlertDialogActivity.class);
                 startActivity(goToNextActivity);
                 break;
         }

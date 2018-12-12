@@ -1,6 +1,7 @@
 package com.example.hp1.nizarofficialprojectmovies;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,7 +39,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         btSignIn = findViewById(R.id.btSignIn);
-        btSignIn.setOnClickListener(this);
+        btSignIn.setTextColor(Color.BLACK);
+        btSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplication(),MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -48,7 +56,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvSignin = (TextView) findViewById(R.id.tvSignin);
 
         btOrSignUp = findViewById(R.id.btOrSignUp);
-        btOrSignUp.setOnClickListener(this);
+        btOrSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(getApplication(),SignUpActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void onStart() {
