@@ -18,7 +18,7 @@ public class Main3Activity extends AppCompatActivity {
     public static int PAGE = 1;
     public static String API_KEY = "efc31ce25ae8abcffb42bd206ad17519";
     public static String LANGUAGE = "en-US";
-    public static  String CATEGORY = "popular";
+    public static String CATEGORY = "popular";
 
     private TextView myTextView;
 
@@ -27,7 +27,7 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        myTextView = (TextView)findViewById(R.id.my_tv);
+        myTextView = (TextView) findViewById(R.id.my_tv);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -36,14 +36,15 @@ public class Main3Activity extends AppCompatActivity {
 
         Api_Interface myInterface = retrofit.create(Api_Interface.class);
 
-        Call<MoviesResult> call = myInterface.listofMovies(CATEGORY,API_KEY,LANGUAGE,PAGE);
+        Call<MoviesResult> call = myInterface.listofMovies(CATEGORY, API_KEY, LANGUAGE, PAGE);
 
         call.enqueue(new Callback<MoviesResult>() {
             @Override
             public void onResponse(Call<MoviesResult> call, Response<MoviesResult> response) {
                 MoviesResult results = response.body();
                 List<MoviesResult.ResultsBean> listofMovies = results.getResults();
-                MoviesResult.ResultsBean firstMovie = listofMovies.get(0);
+                MoviesResult.ResultsBean firstMovie = listofMovies.get(2);
+
 
                 myTextView.setText(firstMovie.getTitle());
             }

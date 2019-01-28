@@ -10,6 +10,8 @@ public class Post {
 
     private String title;
 
+    private String rating;
+
     @SerializedName("body")
     private String text;
 
