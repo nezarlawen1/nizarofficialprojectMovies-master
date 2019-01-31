@@ -43,7 +43,7 @@ public class Main3Activity extends AppCompatActivity {
             public void onResponse(Call<MoviesResult> call, Response<MoviesResult> response) {
                 MoviesResult results = response.body();
                 List<MoviesResult.ResultsBean> listofMovies = results.getResults();
-                MoviesResult.ResultsBean firstMovie = listofMovies.get(2);
+                MoviesResult.ResultsBean firstMovie = listofMovies.get(0);
 
 
                 myTextView.setText(firstMovie.getTitle());
