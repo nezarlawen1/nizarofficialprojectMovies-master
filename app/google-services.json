@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "91909328275",
+    "firebase_url": "https://nizarofficialprojectmovie.firebaseio.com",
+    "project_id": "nizarofficialprojectmovie",
+    "storage_bucket": "nizarofficialprojectmovie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91909328275:android:fee29f8152152438",
+        "android_client_info": {
+          "package_name": "com.example.hp1.nizarofficialprojectmovies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91909328275-fo3ogt64s2qa4tvcud07moi5in4kq0hu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hp1.nizarofficialprojectmovies",
+            "certificate_hash": "7994e7e748594e74fc813d64187e850a3d6e4f4b"
+          }
+        },
+        {
+          "client_id": "91909328275-f7k48gcrpu6omplpuh6sdvq24lesta8o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hp1.nizarofficialprojectmovies",
+            "certificate_hash": "b8cbc45cf0b5d32f21f680ce0b3278ac78f4eeea"
+          }
+        },
+        {
+          "client_id": "91909328275-dop709g3lsivbqfqau6tqbkor16aee5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDim3Yd41ZyuyvxWWaXmuQjhYAoXsENxt0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "91909328275-dop709g3lsivbqfqau6tqbkor16aee5u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
