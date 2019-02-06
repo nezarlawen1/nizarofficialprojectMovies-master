@@ -34,8 +34,8 @@
         <activity android:name=".FireActivity" />
         <activity android:name=".SharedActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

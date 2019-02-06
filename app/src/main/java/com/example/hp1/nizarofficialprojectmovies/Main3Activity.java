@@ -20,7 +20,7 @@ public class Main3Activity extends AppCompatActivity {
     public static String LANGUAGE = "en-US";
     public static String CATEGORY = "popular";
 
-    private TextView myTextView;
+    private TextView myTextView,myTextView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class Main3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
 
         myTextView = (TextView) findViewById(R.id.my_tv);
+        myTextView1 = (TextView) findViewById(R.id.my_tv1);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -44,9 +45,8 @@ public class Main3Activity extends AppCompatActivity {
                 MoviesResult results = response.body();
                 List<MoviesResult.ResultsBean> listofMovies = results.getResults();
                 MoviesResult.ResultsBean firstMovie = listofMovies.get(0);
-
-
                 myTextView.setText(firstMovie.getTitle());
+                myTextView1.setText(firstMovie.getOriginal_language());
             }
 
             @Override
