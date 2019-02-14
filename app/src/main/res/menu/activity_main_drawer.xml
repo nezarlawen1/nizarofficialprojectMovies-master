@@ -14,19 +14,25 @@
 
             android:title="Home Page" />
         <item
-            android:id="@+id/all_movies"
+            android:id="@+id/Popular_Movies"
             android:icon="@drawable/ic_all_movies"
 
 
-            android:title="All Movies" />
+            android:title="Popular Movies" />
         <item
-            android:id="@+id/top_10"
+            android:id="@+id/top_Rated"
 
             android:icon="@drawable/ic_top_10"
 
-            android:title="Top 10" />
+            android:title="Top Rated" />
         <item
-            android:id="@+id/search"
+            android:id="@+id/Up_Coming"
+
+            android:icon="@drawable/ic_upcoming"
+
+            android:title="UpComing" />
+        <item
+            android:id="@+id/Search"
 
             android:icon="@drawable/ic_search_"
 
@@ -37,12 +43,6 @@
             android:icon="@drawable/ic_favorites"
 
             android:title="Favorites" />
-        <item
-            android:id="@+id/recommended"
-
-            android:icon="@drawable/ic_recommended"
-
-            android:title="Recommended" />
 
 
     </group>
