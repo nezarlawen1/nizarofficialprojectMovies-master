@@ -26,12 +26,6 @@
 
             android:title="Top Rated" />
         <item
-            android:id="@+id/Up_Coming"
-
-            android:icon="@drawable/ic_upcoming"
-
-            android:title="UpComing" />
-        <item
             android:id="@+id/Search"
 
             android:icon="@drawable/ic_search_"
@@ -43,6 +37,12 @@
             android:icon="@drawable/ic_favorites"
 
             android:title="Favorites" />
+        <item
+            android:id="@+id/Up_Coming"
+
+            android:icon="@drawable/ic_upcoming"
+
+            android:title="Up Coming" />
 
 
     </group>

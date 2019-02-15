@@ -12,7 +12,7 @@
         android:id="@+id/tvAllMovies"
         android:layout_width="match_parent"
         android:layout_height="57dp"
-        android:text="All Movies"
+        android:text="Popular Movies"
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold" />

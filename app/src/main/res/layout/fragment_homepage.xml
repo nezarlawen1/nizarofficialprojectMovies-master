@@ -18,6 +18,12 @@
         android:textSize="40sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/Mname"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:textSize="50dp" />
+
     <HorizontalScrollView
         android:layout_width="347dp"
         android:layout_height="190dp"

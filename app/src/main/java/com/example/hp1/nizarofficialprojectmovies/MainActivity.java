@@ -131,17 +131,17 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HomePageFragment()).commit();
                 break;
-            case R.id.all_movies:
+            case R.id.Popular_Movies:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AllMoviesFragment()).commit();
                 break;
-            case R.id.top_10:
+            case R.id.top_Rated:
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Top10Fragment()).commit();
                 break;
 
-            case R.id.search:
+            case R.id.Search:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SearchFragment()).commit();
                 break;
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new FavoritesFragment()).commit();
                 break;
-            case R.id.recommended:
+            case R.id.Up_Coming:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new recommendedFragment()).commit();
                 break;
