@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.Popular_Movies:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new AllMoviesFragment()).commit();
+                        new PopularMoviewsFragment()).commit();
                 break;
             case R.id.top_Rated:
 

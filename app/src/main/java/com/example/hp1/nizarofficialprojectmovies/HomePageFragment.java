@@ -29,15 +29,15 @@ public class HomePageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_homepage, container, false);
+        View layout =  inflater.inflate(R.layout.fragment_homepage, container, false);
+        Mname = layout.findViewById(R.id.m_name);
+
+        return layout;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_homepage);
-
-        Mname =getActivity().findViewById(R.id.Mname);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -67,5 +67,6 @@ public class HomePageFragment extends Fragment {
     }
 
     private void setContentView(int fragment_homepage) {
+
     }
 }

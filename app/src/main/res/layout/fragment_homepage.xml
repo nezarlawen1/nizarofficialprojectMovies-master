@@ -19,7 +19,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/Mname"
+        android:id="@+id/m_name"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:textSize="50dp" />

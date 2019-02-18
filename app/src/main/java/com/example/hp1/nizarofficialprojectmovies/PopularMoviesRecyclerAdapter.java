@@ -15,24 +15,24 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class PopularMoviesRecyclerView extends RecyclerView.Adapter<PopularMoviesRecyclerView.ViewHolder> {
-    private static final String TAG = "PopularMoviesRecyclerView";
+public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMoviesRecyclerAdapter.ViewHolder> {
+    private static final String TAG = "PopularMoviesRecyclerAdapter";
+    private final List<MoviesResult.ResultsBean> movies;
 
-    private ArrayList<String> mPicNames = new ArrayList<>();
-    private ArrayList<String> mPics = new ArrayList<>();
     private Context mContext;
 
-    public PopularMoviesRecyclerView(Context mContext, ArrayList<String> mPicNames, ArrayList<String> mPics) {
-        this.mPicNames = mPicNames;
-        this.mPics = mPics;
+    public PopularMoviesRecyclerAdapter(Context mContext,
+                                        List<MoviesResult.ResultsBean> listofMovies) {
         this.mContext = mContext;
+        this.movies = listofMovies;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.horiz_item,viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.horiz_item, viewGroup, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -42,24 +42,24 @@ public class PopularMoviesRecyclerView extends RecyclerView.Adapter<PopularMovie
         Log.d(TAG, "onBindViewHolder: called");
         Glide.with(mContext)
                 .asBitmap()
-                .load(mPics.get(i))
+                .load(GetPopularMovies.BASE_URL + movies.get(i).getPoster_path())
                 .into(viewHolder.moviePic);
 
-        viewHolder.movieName.setText(mPicNames.get(i));
+        viewHolder.movieName.setText(movies.get(i).getTitle());
 
-        viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on : " + mPicNames.get(i));
-                Toast.makeText(mContext, mPicNames.get(i), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(TAG, "onClick: clicked on : " + mPicNames.get(i));
+//                Toast.makeText(mContext, mPicNames.get(i), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     }
 
     @Override
     public int getItemCount() {
-        return mPicNames.size();
+        return movies.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

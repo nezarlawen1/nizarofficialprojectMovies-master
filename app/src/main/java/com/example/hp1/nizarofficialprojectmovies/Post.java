@@ -12,6 +12,8 @@ public class Post {
 
     private String rating;
 
+    private String poster_path;
+
     @SerializedName("body")
     private String text;
 
@@ -29,5 +31,13 @@ public class Post {
 
     public String getText() {
         return text;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public String getPoster_path() {
+        return poster_path;
     }
 }

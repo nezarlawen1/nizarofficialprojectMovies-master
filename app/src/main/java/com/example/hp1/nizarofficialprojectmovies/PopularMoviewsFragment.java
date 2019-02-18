@@ -1,32 +1,78 @@
 package com.example.hp1.nizarofficialprojectmovies;
 
-
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class PopularMoviesRecyclerViewClass extends AppCompatActivity {
-    private static final String TAG = "AllMoviesFragment";
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class PopularMoviewsFragment extends Fragment {
+    private static final String TAG = "PopularMoviewsFragment";
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImagesUrls = new ArrayList<>();
+    private View layout;
+    private GetPopularMovies popularMovieApi;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        layout = inflater.inflate(R.layout.fragment_all_movies, container, false);
+
+        Callback<MoviesResult> moviesResultCallback = new Callback<MoviesResult>() {
+            @Override
+            public void onResponse(Call<MoviesResult> call, Response<MoviesResult> response) {
+                MoviesResult results = response.body();
+                List<MoviesResult.ResultsBean> listofMovies = results.getResults();
+
+                Log.d(TAG, "initRecyclerView: init recyclerview.");
+                RecyclerView recyclerView = layout.findViewById(R.id.recycler_view);
+                PopularMoviesRecyclerAdapter adapter = new PopularMoviesRecyclerAdapter(getActivity(), listofMovies);
+                recyclerView.setAdapter(adapter);
+
+                GridLayoutManager grid = new GridLayoutManager(getActivity(), 2);
+                recyclerView.setLayoutManager(grid);
+            }
+
+            @Override
+            public void onFailure(Call<MoviesResult> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        };
+
+        popularMovieApi.getPopularMovies(moviesResultCallback);
+
+        return layout;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_all_movies);
 
-        Log.d(TAG, "onCreate: started.");
-
+        popularMovieApi = new GetPopularMovies();
         initImageBitmaps();
     }
 
-    private void initImageBitmaps(){
+    private void initImageBitmaps() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
         mImagesUrls.add("https://dendy.azureedge.net/movies/other/xRWht48C2V8XNfzvPehyClOvDni.jpg?v=20190208");
@@ -50,14 +96,7 @@ public class PopularMoviesRecyclerViewClass extends AppCompatActivity {
         mImagesUrls.add("");
         mNames.add("");
 
-        initRecyclerView();
     }
 
-    private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: init recyclerview.");
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        PopularMoviesRecyclerView adapter =new PopularMoviesRecyclerView(this , mNames ,mImagesUrls);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
 }
+
