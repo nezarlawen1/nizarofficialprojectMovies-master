@@ -42,7 +42,7 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
         Log.d(TAG, "onBindViewHolder: called");
         Glide.with(mContext)
                 .asBitmap()
-                .load(GetPopularMovies.BASE_URL + movies.get(i).getPoster_path())
+          //      .load(GetPopularMovies.BASE_URL + movies.get(i).getPoster_path())
                 .into(viewHolder.moviePic);
 
         viewHolder.movieName.setText(movies.get(i).getTitle());
