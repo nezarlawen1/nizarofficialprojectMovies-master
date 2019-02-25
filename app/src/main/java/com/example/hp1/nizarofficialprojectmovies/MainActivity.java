@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity
     private static final int CAMERA_REQUEST = 0;
     private static final int SELECT_IMAGE = 1;
     private static final int NOTIFICATION_REMINDER_NIGHT = 2;
+
+    private static ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,8 @@ public class MainActivity extends AppCompatActivity
 
 
         profileImage = findViewById(R.id.profileImage);
-        //profileImage.setOnClickListener();
+
+        click();
 
         Intent notifyIntent = new Intent(this,MyReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast
@@ -66,6 +71,21 @@ public class MainActivity extends AppCompatActivity
         AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
                 1000 * 60 * 60 * 24, pendingIntent);
+
+
+    }
+
+
+    public void click()
+    {
+        img = (ImageView)findViewById(R.id.profileImage);
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+            Intent i =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(i,CAMERA_REQUEST);
+
+            }
+        });
     }
 
     public String saveImage(Bitmap bitmap) {

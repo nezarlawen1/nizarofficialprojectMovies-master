@@ -30,7 +30,7 @@ public class PopularMoviewsFragment extends Fragment {
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImagesUrls = new ArrayList<>();
     private View layout;
-    //private GetPopularMovies popularMovieApi;
+    private GetPopularMovies popularMovieApi;
 
     @Nullable
     @Override
@@ -59,7 +59,7 @@ public class PopularMoviewsFragment extends Fragment {
             }
         };
 
-      //  popularMovieApi.getPopularMovies(moviesResultCallback);
+        popularMovieApi.getPopularMovies(moviesResultCallback);
 
         return layout;
     }
@@ -68,7 +68,7 @@ public class PopularMoviewsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-     //   popularMovieApi = new GetPopularMovies();
+       popularMovieApi = new GetPopularMovies();
         initImageBitmaps();
     }
 
