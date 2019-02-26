@@ -1,10 +1,13 @@
 package com.example.hp1.nizarofficialprojectmovies;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -21,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity
     private static final int SELECT_IMAGE = 1;
     private static final int NOTIFICATION_REMINDER_NIGHT = 2;
 
-    private static ImageView img;
+    //private static ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +64,18 @@ public class MainActivity extends AppCompatActivity
             navigationView.setCheckedItem(R.id.Home_page);
         }
 
+        View i = navigationView.getHeaderView(0);
+        profileImage = i.findViewById(R.id.profileImage);
 
-        profileImage = findViewById(R.id.profileImage);
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(i,CAMERA_REQUEST);
+            }
+        });
 
-        click();
+       // onclick();
 
         Intent notifyIntent = new Intent(this,MyReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast
@@ -75,18 +87,40 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
-    public void click()
-    {
-        img = (ImageView)findViewById(R.id.profileImage);
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-            Intent i =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(i,CAMERA_REQUEST);
-
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK){
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            profileImage.setImageBitmap(photo);
+        }
+        else{
+            if(requestCode == SELECT_IMAGE && resultCode == Activity.RESULT_OK){
+                Uri targetUri = data.getData();
+                try{
+                    bitmap =
+                            BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
+                    profileImage.setImageBitmap(bitmap);
+                }
+                catch (FileNotFoundException e){
+                    e.printStackTrace();
+                }
             }
-        });
+        }
     }
+
+
+   // public void onclick()
+   // {
+   //     img = (ImageView)findViewById(R.id.profileImage);
+   //     img.setOnClickListener(new View.OnClickListener() {
+   //         @Override public void onClick(View v) {
+    //            Intent i =new Intent(getApplication(),LoginActivity.class);
+    //            startActivity(i);
+            //Intent i =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            //startActivityForResult(i,CAMERA_REQUEST);
+
+    //        }
+    //    });
+   // }
 
     public String saveImage(Bitmap bitmap) {
         File root = Environment.getExternalStorageDirectory();
