@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity
     private static final int SELECT_IMAGE = 1;
     private static final int NOTIFICATION_REMINDER_NIGHT = 2;
 
-    //private static ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-       // onclick();
+
 
         Intent notifyIntent = new Intent(this,MyReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast
@@ -107,20 +106,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
-   // public void onclick()
-   // {
-   //     img = (ImageView)findViewById(R.id.profileImage);
-   //     img.setOnClickListener(new View.OnClickListener() {
-   //         @Override public void onClick(View v) {
-    //            Intent i =new Intent(getApplication(),LoginActivity.class);
-    //            startActivity(i);
-            //Intent i =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            //startActivityForResult(i,CAMERA_REQUEST);
-
-    //        }
-    //    });
-   // }
 
     public String saveImage(Bitmap bitmap) {
         File root = Environment.getExternalStorageDirectory();

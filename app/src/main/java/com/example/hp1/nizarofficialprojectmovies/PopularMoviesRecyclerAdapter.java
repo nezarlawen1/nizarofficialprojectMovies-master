@@ -47,13 +47,6 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
 
         viewHolder.movieName.setText(movies.get(i).getTitle());
 
-//        viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d(TAG, "onClick: clicked on : " + mPicNames.get(i));
-//                Toast.makeText(mContext, mPicNames.get(i), Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
     }
 
