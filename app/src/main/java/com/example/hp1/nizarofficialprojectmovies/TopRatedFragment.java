@@ -18,18 +18,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PopularMoviewsFragment extends Fragment {
-    private static final String TAG = "PopularMoviewsFragment";
+public class TopRatedFragment extends Fragment {
+    private static final String TAG = "TopRatedFragment";
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImagesUrls = new ArrayList<>();
     private View layout;
-    private GetPopularMovies popularMovieApi;
+    private GetTopRated topRatedApi;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        layout = inflater.inflate(R.layout.fragment_popular_movies, container, false);
+        layout = inflater.inflate(R.layout.fragment_top_rated, container, false);
 
         Callback<MoviesResult> moviesResultCallback = new Callback<MoviesResult>() {
             @Override
@@ -53,7 +53,7 @@ public class PopularMoviewsFragment extends Fragment {
             }
         };
 
-        popularMovieApi.getPopularMovies(moviesResultCallback);
+        topRatedApi.gettopRated(moviesResultCallback);
 
         return layout;
     }
@@ -61,7 +61,7 @@ public class PopularMoviewsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       popularMovieApi = new GetPopularMovies();
+        topRatedApi = new GetTopRated();
         initImageBitmaps();
     }
 
@@ -92,4 +92,3 @@ public class PopularMoviewsFragment extends Fragment {
     }
 
 }
-

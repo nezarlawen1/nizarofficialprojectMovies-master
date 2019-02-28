@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.top_Rated:
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Top10Fragment()).commit();
+                        new TopRatedFragment()).commit();
                 break;
 
             case R.id.Search:
@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.Up_Coming:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new recommendedFragment()).commit();
+                        new upcomingFragment()).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

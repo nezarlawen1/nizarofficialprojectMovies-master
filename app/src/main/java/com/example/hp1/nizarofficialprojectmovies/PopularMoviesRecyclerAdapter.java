@@ -45,6 +45,11 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
                 .load(GetPopularMovies.BASE_URL + movies.get(i).getPoster_path())
                 .into(viewHolder.moviePic);
 
+        Glide.with(mContext)
+                .asBitmap()
+                .load(GetTopRated.BASE_URL + movies.get(i).getPoster_path())
+                .into(viewHolder.moviePic);
+
         viewHolder.movieName.setText(movies.get(i).getTitle());
 
 
