@@ -18,18 +18,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TopRatedFragment extends Fragment {
-    private static final String TAG = "TopRatedFragment";
+public class NowPlayingFragment extends Fragment {
+    private static final String TAG = "NowPlayingFragment";
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImagesUrls = new ArrayList<>();
     private View layout;
-    private GetTopRated topRatedApi;
+    private GetNowPlaying nowPlayingApi;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        layout = inflater.inflate(R.layout.fragment_top_rated, container, false);
+        layout = inflater.inflate(R.layout.fragment_now_playing, container, false);
 
         Callback<MoviesResult> moviesResultCallback = new Callback<MoviesResult>() {
             @Override
@@ -37,8 +37,8 @@ public class TopRatedFragment extends Fragment {
                 MoviesResult results = response.body();
                 List<MoviesResult.ResultsBean> listofMovies = results.getResults();
 
-                Log.d(TAG, "initRecyclerView: init recyclerview1.");
-                RecyclerView recyclerView = layout.findViewById(R.id.recycler_view1);
+                Log.d(TAG, "initRecyclerView: init recyclerview3.");
+                RecyclerView recyclerView = layout.findViewById(R.id.recycler_view3);
                 PopularMoviesRecyclerAdapter adapter = new PopularMoviesRecyclerAdapter(getActivity(), listofMovies);
                 recyclerView.setAdapter(adapter);
 
@@ -53,7 +53,7 @@ public class TopRatedFragment extends Fragment {
             }
         };
 
-        topRatedApi.gettopRated(moviesResultCallback);
+        nowPlayingApi.getNowPlaying(moviesResultCallback);
 
         return layout;
     }
@@ -61,7 +61,7 @@ public class TopRatedFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        topRatedApi = new GetTopRated();
+        nowPlayingApi = new GetNowPlaying();
         initImageBitmaps();
     }
 
@@ -90,5 +90,4 @@ public class TopRatedFragment extends Fragment {
         mNames.add("");
 
     }
-
 }

@@ -8,11 +8,11 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/Home_page"
+            android:id="@+id/Now_Playing"
 
             android:icon="@drawable/ic_home_page"
 
-            android:title="Home Page" />
+            android:title="Now Playing" />
         <item
             android:id="@+id/Popular_Movies"
             android:icon="@drawable/ic_all_movies"

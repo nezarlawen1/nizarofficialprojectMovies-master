@@ -16,4 +16,9 @@
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view1"/>
 </LinearLayout>

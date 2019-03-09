@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_light"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NowPlayingFragment"
+    android:orientation="vertical"
+    android:background="#8B008B">
 
 
     <TextView
-        android:id="@+id/tvRecommended"
+        android:id="@+id/tvHomePage"
         android:layout_width="match_parent"
-        android:layout_height="113dp"
-        android:layout_weight="1"
-        android:text="Up Coming"
+        android:layout_height="74dp"
+        android:text="Now Playing"
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold" />
@@ -20,6 +21,6 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/recycler_view2"/>
+        android:id="@+id/recycler_view3"/>
+
 </LinearLayout>

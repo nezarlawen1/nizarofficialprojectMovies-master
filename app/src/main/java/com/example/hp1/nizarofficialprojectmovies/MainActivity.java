@@ -1,9 +1,6 @@
 package com.example.hp1.nizarofficialprojectmovies;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -59,8 +56,8 @@ public class MainActivity extends AppCompatActivity
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new HomePageFragment()).commit();
-            navigationView.setCheckedItem(R.id.Home_page);
+                    new NowPlayingFragment()).commit();
+            navigationView.setCheckedItem(R.id.Now_Playing);
         }
 
         View i = navigationView.getHeaderView(0);
@@ -76,12 +73,12 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        Intent notifyIntent = new Intent(this,MyReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast
-                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
-                1000 * 60 * 60 * 24, pendingIntent);
+//        Intent notifyIntent = new Intent(this,MyReceiver.class);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast
+//                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
+//                1000 * 60 * 60 * 24, pendingIntent);
 
 
     }
@@ -176,9 +173,9 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
-            case R.id.Home_page:
+            case R.id.Now_Playing:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HomePageFragment()).commit();
+                        new NowPlayingFragment()).commit();
                 break;
             case R.id.Popular_Movies:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
