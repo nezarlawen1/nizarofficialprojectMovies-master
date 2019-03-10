@@ -18,8 +18,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PopularMoviewsFragment extends Fragment {
-    private static final String TAG = "PopularMoviewsFragment";
+public class PopularMoviesFragment extends Fragment {
+    private static final String TAG = "PopularMoviesFragment";
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImagesUrls = new ArrayList<>();

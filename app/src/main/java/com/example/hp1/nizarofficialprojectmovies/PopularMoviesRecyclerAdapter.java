@@ -21,6 +21,15 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
     private static final String TAG = "PopularMoviesRecyclerAdapter";
     private final List<MoviesResult.ResultsBean> movies;
 
+    private OnItemClickListener mListener;
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
     private Context mContext;
 
     public PopularMoviesRecyclerAdapter(Context mContext,
@@ -51,6 +60,7 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
                 .into(viewHolder.moviePic);
 
         viewHolder.movieName.setText(movies.get(i).getTitle());
+        //viewHolder.moviePic.setImageBitmap(movies.get(i).getPoster_path());
 
 
     }
@@ -72,6 +82,17 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
             moviePic = itemView.findViewById(R.id.moviePic);
             movieName = itemView.findViewById(R.id.movieName);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

@@ -13,8 +13,11 @@ public interface Api_Interface {
             @Query("api_key") String apiKey,
             @Query("language")String language,
             @Query("page") int page
+            //@Query("poster_path") String posterPath
     );
-
-
+//    @GET("/t/w500")
+//    Call<MoviesResult> listofMovies(
+//            @Query("poster_path") String posterPath
+//    };
 }
 

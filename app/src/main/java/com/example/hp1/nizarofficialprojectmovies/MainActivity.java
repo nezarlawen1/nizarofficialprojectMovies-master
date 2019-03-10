@@ -1,6 +1,9 @@
 package com.example.hp1.nizarofficialprojectmovies;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,9 +17,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,7 +35,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawer;
-    ImageView profileImage;
+    ImageView profileImage,moviePic;
     Bitmap bitmap;
     private static final int CAMERA_REQUEST = 0;
     private static final int SELECT_IMAGE = 1;
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity
 
         View i = navigationView.getHeaderView(0);
         profileImage = i.findViewById(R.id.profileImage);
+        moviePic = i.findViewById(R.id.moviePic);
 
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,14 +77,23 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        moviePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(),LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
-//        Intent notifyIntent = new Intent(this,MyReceiver.class);
-//        PendingIntent pendingIntent = PendingIntent.getBroadcast
-//                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
-//                1000 * 60 * 60 * 24, pendingIntent);
+
+
+        Intent notifyIntent = new Intent(this,MyReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast
+                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
+                1000 * 60 * 60 * 24, pendingIntent);
 
 
     }
@@ -179,7 +194,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.Popular_Movies:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new PopularMoviewsFragment()).commit();
+                        new PopularMoviesFragment()).commit();
                 break;
             case R.id.top_Rated:
 
