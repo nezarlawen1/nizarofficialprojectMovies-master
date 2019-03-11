@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,10 +33,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements  NavigationView.OnNavigationItemSelectedListener  {
 
     DrawerLayout drawer;
-    ImageView profileImage,moviePic;
+    ImageView profileImage;
+    ImageButton moviePic;
     Bitmap bitmap;
     private static final int CAMERA_REQUEST = 0;
     private static final int SELECT_IMAGE = 1;

@@ -10,11 +10,12 @@
         <item
             android:id="@+id/Now_Playing"
 
-            android:icon="@drawable/ic_home_page"
+            android:icon="@drawable/ic_now_playing"
 
             android:title="Now Playing" />
         <item
             android:id="@+id/Popular_Movies"
+
             android:icon="@drawable/ic_all_movies"
 
 
