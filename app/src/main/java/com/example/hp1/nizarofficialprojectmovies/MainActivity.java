@@ -79,26 +79,29 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        moviePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(),LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+//        moviePic.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplication(),LoginActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
 
-        Intent notifyIntent = new Intent(this,MyReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast
-                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
-                1000 * 60 * 60 * 24, pendingIntent);
+//        Intent notifyIntent = new Intent(this,MyReceiver.class);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast
+//                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
+//                1000 * 60 * 60 * 24, pendingIntent);
+
 
 
     }
+
+
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK){

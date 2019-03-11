@@ -26,6 +26,7 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
         void onItemClick(int position);
     }
 
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
@@ -49,15 +50,13 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Log.d(TAG, "onBindViewHolder: called");
+        String imageUrl = GetPopularMovies.IMAGE_BASE_URL + "200" + movies.get(i).getPoster_path();
+        Log.i(TAG, imageUrl);
         Glide.with(mContext)
                 .asBitmap()
-                .load(GetPopularMovies.BASE_URL + movies.get(i).getPoster_path())
+                .load(imageUrl)
                 .into(viewHolder.moviePic);
 
-        Glide.with(mContext)
-                .asBitmap()
-                .load(GetTopRated.BASE_URL + movies.get(i).getPoster_path())
-                .into(viewHolder.moviePic);
 
         viewHolder.movieName.setText(movies.get(i).getTitle());
         //viewHolder.moviePic.setImageBitmap(movies.get(i).getPoster_path());
@@ -82,7 +81,7 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
             moviePic = itemView.findViewById(R.id.moviePic);
             movieName = itemView.findViewById(R.id.movieName);
             parentLayout = itemView.findViewById(R.id.parent_layout);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            moviePic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mListener != null) {

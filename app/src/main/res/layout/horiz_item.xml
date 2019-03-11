@@ -11,12 +11,11 @@
     android:id="@+id/parent_layout">
 
 
-    <ImageButton
+    <ImageView
         android:id="@+id/moviePic"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         tools:srcCompat="@tools:sample/avatars[2]"
-        android:onClick="onClick"
         android:padding="15dp"/>
 
     <TextView

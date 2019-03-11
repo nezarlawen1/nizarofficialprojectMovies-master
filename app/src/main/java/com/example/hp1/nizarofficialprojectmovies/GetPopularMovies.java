@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GetPopularMovies {
 
     public static String BASE_URL = "https://api.themoviedb.org";
+    public static String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w";
     //public static String BASE_URL1 = "http://image.tmdb.org/t/p/";
     public static int PAGE = 1;
     public static String API_KEY = "efc31ce25ae8abcffb42bd206ad17519";
