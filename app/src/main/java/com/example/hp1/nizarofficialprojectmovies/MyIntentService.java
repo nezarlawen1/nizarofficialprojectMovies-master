@@ -28,7 +28,7 @@ public class MyIntentService extends IntentService {
         Notification.Builder builder = new Notification.Builder(this);
         builder.setContentTitle("Praise The Sun");
         builder.setContentText("gerorge haddad homo");
-        builder.setSmallIcon(R.drawable.ic_all_movies);
+        builder.setSmallIcon(R.drawable.ic_favorites);
         Intent notifyIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 2, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         //to be able to launch your activity from the notification
