@@ -17,19 +17,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MovieInfo"
-            android:label="@string/title_activity_movie_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <service
-            android:name=".MyIntentService"
-            android:exported="false" />
-
-        <receiver
-            android:name=".MyReceiver"
-            android:enabled="true"
-            android:exported="true" />
 
         <activity
             android:name=".MainActivity"
@@ -50,6 +37,19 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".Main3Activity" />
+        <activity
+            android:name=".MovieInfo"
+            android:label="@string/title_activity_movie_info"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <service
+            android:name=".MyIntentService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

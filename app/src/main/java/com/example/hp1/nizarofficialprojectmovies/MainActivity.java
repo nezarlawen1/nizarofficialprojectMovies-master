@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity
     private static final int NOTIFICATION_REMINDER_NIGHT = 2;
     private int requestCode;
     private int grantResults[];
+    public static final int PICK_IMAGE = 1;
+
 
 
     @Override
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
             //if you dont have required permissions ask for it (only required for API 23+)
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, requestCode);
-
+        }
 
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
@@ -99,6 +101,14 @@ public class MainActivity extends AppCompatActivity
                     startActivityForResult(i, CAMERA_REQUEST);
                 }
             });
+//            profileImage.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//                                                    Intent i =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                                    startActivityForResult(i,CAMERA_REQUEST);
+//                    return false;
+//                }
+//            });
 
 //        moviePic.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -118,7 +128,7 @@ public class MainActivity extends AppCompatActivity
 
 
         }
-    }
+
     @Override // android recommended class to handle permissions
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
@@ -148,10 +158,13 @@ public class MainActivity extends AppCompatActivity
 
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
+
+
+
         if(requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK){
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             profileImage.setImageBitmap(photo);
-            String file = saveImage(bitmap);
+            String file = saveImage(photo);
 
             SharedPreferences pref = getSharedPreferences("Profile",MODE_PRIVATE);
             SharedPreferences.Editor editor = pref.edit();
@@ -178,9 +191,13 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void openGallery(){
+        Intent gallary = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallary, PICK_IMAGE);
+    }
+
 
     public String saveImage(Bitmap bitmap) {
-
 
         File root = Environment.getExternalStorageDirectory();
 
@@ -196,6 +213,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
             Log.d("FILE",file.toString());
             Toast.makeText(this, file + " Failed to save image", Toast.LENGTH_LONG).show();
+            Log.d("IMAGE SAVE",e.toString());
         }
         return filePath;
 
