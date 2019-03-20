@@ -55,7 +55,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         populateAutoComplete();
 
         btSignUp = (Button) findViewById(R.id.btSignUp);
-        btSignUp.setOnClickListener(this);
+        btSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(getApplication(),LoginActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void populateAutoComplete() {
