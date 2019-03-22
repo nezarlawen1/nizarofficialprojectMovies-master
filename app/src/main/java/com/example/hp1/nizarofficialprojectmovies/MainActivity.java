@@ -40,7 +40,9 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener  {
-
+    /**
+     *
+     */
     private static final int WRITE_REQUEST_CODE = 2;
     DrawerLayout drawer;
     ImageView profileImage;

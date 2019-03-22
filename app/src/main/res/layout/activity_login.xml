@@ -9,6 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#2F9D9B"
     tools:context=".LoginActivity">
 
     <!-- Login progress -->
@@ -81,7 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:textStyle="bold"
-                tools:text="@string/sing_in" />
+
+                tools:text="SIGN IN" />
 
             <Button
                 android:id="@+id/btOrSignUp"
