@@ -23,6 +23,10 @@ public class MyIntentService extends IntentService {
         super("MyIntentService");
     }
 
+    /**
+     *
+     * @param intent
+     */
     @Override
     protected void onHandleIntent(Intent intent) {
         Notification.Builder builder = new Notification.Builder(this);

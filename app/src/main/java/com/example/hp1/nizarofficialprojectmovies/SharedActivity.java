@@ -15,12 +15,14 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
     EditText etNamne;
     TextView tvName;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shared);
-
-
 
         btSave = (Button) findViewById(R.id.btSave);
         btSave.setOnClickListener(this);
@@ -35,6 +37,10 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    /**
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         SharedPreferences pref = getSharedPreferences("Profile",MODE_PRIVATE);

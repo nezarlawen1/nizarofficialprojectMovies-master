@@ -5,6 +5,9 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * queries from the Api_interface that can take content from he database
+ */
 public class GetNowPlaying {
     public static String BASE_URL = "https://api.themoviedb.org";
     public static int PAGE = 1;
@@ -22,6 +25,10 @@ public class GetNowPlaying {
         api_interface = retrofit.create(Api_Interface.class);
     }
 
+    /**
+     * call back this class in it's fragment class
+     * @param moviesResultCallback
+     */
     void getNowPlaying (Callback<MoviesResult> moviesResultCallback) {
 
         Call<MoviesResult> call = api_interface.listofMovies(CATEGORY, API_KEY, LANGUAGE, PAGE);

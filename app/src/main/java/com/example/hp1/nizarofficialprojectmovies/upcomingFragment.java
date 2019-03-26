@@ -25,7 +25,13 @@ public class upcomingFragment extends Fragment {
     private ArrayList<String> mImagesUrls = new ArrayList<>();
     private View layout;
     private GetUpComing upComingApi;
-
+    /**
+     * call back from the Get class so it can be inflate in the xml of the fragment
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

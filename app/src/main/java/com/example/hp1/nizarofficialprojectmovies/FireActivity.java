@@ -31,6 +31,10 @@ public class FireActivity extends AppCompatActivity implements View.OnClickListe
     ListView lvUsers;
     ArrayList<String>Users;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +83,11 @@ public class FireActivity extends AppCompatActivity implements View.OnClickListe
             }
         });*/
         myRef.addChildEventListener(new ChildEventListener() {
+            /**
+             *
+             * @param dataSnapshot
+             * @param s
+             */
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String name = dataSnapshot.getValue(String.class);

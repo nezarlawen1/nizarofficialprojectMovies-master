@@ -37,6 +37,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private static final int REQUEST_READ_CONTACTS = 0;
     private FirebaseAuth mAuth;
 
+    /**
+     * creates the text and send the email and password info to the firebase
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +71,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private void populateAutoComplete() {
     }
 
+    /**
+     * creates a user in the firebase and makes the email and password that the user typed the new user's values
+     * @param email
+     * @param password
+     */
     public void createUser(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    /**
+                     *
+                     * @param task
+                     */
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
@@ -92,13 +105,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 });
     }
 
+    /**
+     * checks if the text fields are empty
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         if (v == btSignUp) {
             String user = etEmailSignUp.getText().toString();
             String password = etCreatePassword.getText().toString();
             if (user.equals("")&&password.equals("")) {
-
+                Toast.makeText(SignUpActivity.this, "Email  Or Password Is Empty",
+                        Toast.LENGTH_SHORT).show();
             } else {
                 createUser(user, password);
 

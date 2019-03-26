@@ -26,6 +26,13 @@ public class NowPlayingFragment extends Fragment {
     private View layout;
     private GetNowPlaying nowPlayingApi;
 
+    /**
+     * call back from the Get class so it can be inflated in the xml of the fragment
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +53,11 @@ public class NowPlayingFragment extends Fragment {
                 recyclerView.setLayoutManager(grid);
             }
 
+            /**
+             *
+             * @param call
+             * @param t
+             */
             @Override
             public void onFailure(Call<MoviesResult> call, Throwable t) {
                 t.printStackTrace();
@@ -57,6 +69,11 @@ public class NowPlayingFragment extends Fragment {
 
         return layout;
     }
+
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

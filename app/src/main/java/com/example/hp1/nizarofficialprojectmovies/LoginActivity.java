@@ -32,6 +32,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText email, password;
     final String TAG = "FIREBASE";
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -72,6 +76,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //updateUI(currentUser);
     }
 
+    /**
+     * check if the email and password are in the firebase or not
+     * @param email
+     * @param password
+     */
     public void signIn(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -97,7 +106,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 });
     }
 
-
+    /**
+     * checks if the text fields are empty
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         //createUser
@@ -105,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String Email = email.getText().toString();
             String Password = password.getText().toString();
             if (email.equals("")|| password.equals("")) {
-                Toast.makeText(LoginActivity.this, "Email  Or Passwrod Is Empty",
+                Toast.makeText(LoginActivity.this, "Email  Or Password Is Empty",
                         Toast.LENGTH_SHORT).show();
             } else {
                 signIn(Email, Password);

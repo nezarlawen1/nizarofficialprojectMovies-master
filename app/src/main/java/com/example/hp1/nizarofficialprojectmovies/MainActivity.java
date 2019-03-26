@@ -41,7 +41,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener  {
     /**
-     *
+     * Navigation drawer
      */
     private static final int WRITE_REQUEST_CODE = 2;
     DrawerLayout drawer;
@@ -56,17 +56,25 @@ public class MainActivity extends AppCompatActivity
     public static final int PICK_IMAGE = 1;
 
 
-
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /**
+         * permission to use storage
+         */
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
             //if you dont have required permissions ask for it (only required for API 23+)
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, requestCode);
         }
-
+        /**
+         * navigation drawer builder
+         */
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
@@ -78,7 +86,9 @@ public class MainActivity extends AppCompatActivity
                     this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
             drawer.addDrawerListener(toggle);
             toggle.syncState();
-
+        /**
+         * opening the first fragment right of the bat
+         */
             if (savedInstanceState == null) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new NowPlayingFragment()).commit();
@@ -86,6 +96,10 @@ public class MainActivity extends AppCompatActivity
             }
 
             View i = navigationView.getHeaderView(0);
+
+        /**
+         * profile picture
+         */
             profileImage = i.findViewById(R.id.profileImage);
             moviePic = i.findViewById(R.id.moviePic);
             SharedPreferences pref = getSharedPreferences("Profile", MODE_PRIVATE);
@@ -120,7 +134,9 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 
-
+        /**
+         * notifications
+         */
             Intent notifyIntent = new Intent(this, MyReceiver.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast
                     (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -131,6 +147,12 @@ public class MainActivity extends AppCompatActivity
 
         }
 
+    /**
+     * Permissions for profile picture
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override // android recommended class to handle permissions
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
@@ -158,10 +180,13 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
+    /**
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-
-
 
         if(requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK){
             Bitmap photo = (Bitmap) data.getExtras().get("data");
@@ -198,7 +223,11 @@ public class MainActivity extends AppCompatActivity
         startActivityForResult(gallary, PICK_IMAGE);
     }
 
-
+    /**
+     * Saving profile picture to gallery
+     * @param bitmap
+     * @return
+     */
     public String saveImage(Bitmap bitmap) {
 
         File root = Environment.getExternalStorageDirectory();
@@ -231,6 +260,11 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -238,6 +272,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Option menu
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -266,6 +305,10 @@ public class MainActivity extends AppCompatActivity
 
 
     @SuppressWarnings("StatementWithEmptyBody")
+
+    /**
+     * all fragments are linked to there classes
+      */
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.

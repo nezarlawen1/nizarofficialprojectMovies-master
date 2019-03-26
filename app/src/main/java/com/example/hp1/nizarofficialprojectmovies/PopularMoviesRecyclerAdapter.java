@@ -39,6 +39,12 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
         this.movies = listofMovies;
     }
 
+    /**
+     * This makes the content from the database view in a horiz_item way
+     * @param viewGroup
+     * @param i
+     * @return
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -47,6 +53,11 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
         return holder;
     }
 
+    /**
+     * This takes the data from the database and makes it in the horiz_itm way
+     * @param viewHolder
+     * @param i
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Log.d(TAG, "onBindViewHolder: called");
@@ -64,6 +75,10 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getItemCount() {
         return movies.size();
@@ -75,6 +90,10 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
         TextView movieName;
         LinearLayout parentLayout;
 
+        /**
+         * This a listener to the movie that the user clicked on
+         * @param itemView
+         */
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
