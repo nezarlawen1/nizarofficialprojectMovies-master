@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 public class AlertDialogActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
-
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +20,9 @@ public class AlertDialogActivity extends AppCompatActivity implements DialogInte
     }
 
 
-
+    /**
+     * creates the alert dialog with yes and no answers
+     */
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -48,6 +53,11 @@ public class AlertDialogActivity extends AppCompatActivity implements DialogInte
         dialog.show();
     }
 
+    /**
+     * messages when clicking on yes or no
+     * @param dialogInterface
+     * @param i
+     */
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {
         if(i==dialogInterface.BUTTON_POSITIVE)

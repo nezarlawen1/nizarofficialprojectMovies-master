@@ -6,7 +6,14 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Api_Interface {
-
+    /**
+     *This calls the queries from The Movie DataBase so it can be called
+     * @param category
+     * @param apiKey
+     * @param language
+     * @param page
+     * @return
+     */
     @GET("/3/movie/{category}")
     Call<MoviesResult> listofMovies(
             @Path("category") String category,
@@ -15,9 +22,6 @@ public interface Api_Interface {
             @Query("page") int page
             //@Query("poster_path") String posterPath
     );
-//    @GET("/t/w500")
-//    Call<MoviesResult> listofMovies(
-//            @Query("poster_path") String posterPath
-//    };
+
 }
 

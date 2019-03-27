@@ -33,6 +33,11 @@ public class PopularMoviesRecyclerAdapter extends RecyclerView.Adapter<PopularMo
 
     private Context mContext;
 
+    /**
+     *
+     * @param mContext
+     * @param listofMovies
+     */
     public PopularMoviesRecyclerAdapter(Context mContext,
                                         List<MoviesResult.ResultsBean> listofMovies) {
         this.mContext = mContext;
